@@ -84,7 +84,7 @@ const ViewerModels: NextPage<Props> = ({ }) => {
 
                 color={"rgb(161, 57, 57)"}
             />
-            <FPSCameraController sunref={containerRef} />
+            <FPSCameraController />
 
 
             <Structure scale={[0.5, 0.5, 0.5]} position={[1, -0.2, 8]} />
