@@ -68,7 +68,7 @@ const ViewerModels: NextPage<Props> = ({ }) => {
                 intensity={0}
                 color="rgb(231, 145, 32)"
                 castShadow
-
+                ref={containerRef}
 
                 shadow-mapSize-width={2048}
                 shadow-mapSize-height={2048}
@@ -84,7 +84,7 @@ const ViewerModels: NextPage<Props> = ({ }) => {
 
                 color={"rgb(161, 57, 57)"}
             />
-            <FPSCameraController />
+            <FPSCameraController sunref={containerRef} />
 
 
             <Structure scale={[0.5, 0.5, 0.5]} position={[1, -0.2, 8]} />

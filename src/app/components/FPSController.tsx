@@ -2,6 +2,38 @@ import { useFrame, useThree } from "@react-three/fiber"
 import { useEffect, useRef } from "react"
 import * as THREE from 'three'
 import ProfilePostProcessing from "./PostProcesing"
+export function isDedicatedGPU() {
+    const canvas = document.createElement('canvas')
+    const gl: any = canvas.getContext('webgl') || canvas.getContext('experimental-webgl')
+    if (!gl) return false
+
+    const debugInfo = gl.getExtension('WEBGL_debug_renderer_info')
+    if (!debugInfo) return false
+
+    const renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL)
+    if (!renderer) return false
+
+    const r = renderer.toLowerCase()
+
+    // Detectar Intel Arc (dedicada)
+    const isIntelArc = r.includes('intel') && r.includes('arc')
+
+    // NVIDIA siempre es dedicada
+    const isNVIDIA = r.includes('nvidia') || r.includes('geforce')
+
+    // AMD dedicada si tiene número (ej. RX 6600)
+    const isAMDWithModel = r.includes('radeon') && /\d{3,4}/.test(r)
+
+    // Integradas típicas
+    const isIntelIntegrated = r.includes('intel') && !r.includes('arc')
+    const isAMDIntegrated = r.includes('radeon') && !/\d{3,4}/.test(r)
+    const isMicrosoftBasic = r.includes('microsoft basic') || r.includes('swiftshader')
+
+    const isIntegrated = isIntelIntegrated || isAMDIntegrated || isMicrosoftBasic
+
+    return !isIntegrated && (isNVIDIA || isAMDWithModel || isIntelArc)
+}
+
 
 interface FPSCameraControllerProps {
     cameraHeight?: number // altura de la cámara en metros
@@ -10,6 +42,7 @@ interface FPSCameraControllerProps {
 }
 
 export default function FPSCameraController({
+
     cameraHeight = 2,
     groundTag = "ground",
     fov = 50
@@ -83,6 +116,8 @@ export default function FPSCameraController({
     }, [])
 
     useEffect(() => {
+
+
         const handleClick = () => {
             gl.domElement.requestPointerLock()
         }
@@ -182,6 +217,6 @@ export default function FPSCameraController({
         camera.position.lerp(targetPosition.current, 0.25)
     })
 
-    return <ProfilePostProcessing />
+    return isDedicatedGPU() ? <ProfilePostProcessing /> : null
 
 }
