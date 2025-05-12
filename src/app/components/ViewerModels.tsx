@@ -63,6 +63,7 @@ const ViewerModels: NextPage<Props> = ({ }) => {
             {/* Sombras acumulativas */}
 
             <directionalLight
+                rotation={[50, 1, 10]}
                 position={[100, 100, 100]}
                 intensity={0}
                 color="rgb(231, 145, 32)"
@@ -75,13 +76,13 @@ const ViewerModels: NextPage<Props> = ({ }) => {
                 shadow-camera-right={10}
                 shadow-camera-top={10}
                 shadow-camera-bottom={-10}
-                shadow-bias={-0.0005}
+                shadow-bias={-0.000005}
             />
             <ambientLight
-                intensity={1}
+                intensity={0.5}
 
 
-                color={"rgb(161, 108, 57)"}
+                color={"rgb(161, 57, 57)"}
             />
             <FPSCameraController />
 

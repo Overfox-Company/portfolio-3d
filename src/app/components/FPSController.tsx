@@ -182,6 +182,6 @@ export default function FPSCameraController({
         camera.position.lerp(targetPosition.current, 0.25)
     })
 
-    return null//<ProfilePostProcessing />
+    return <ProfilePostProcessing />
 
 }
