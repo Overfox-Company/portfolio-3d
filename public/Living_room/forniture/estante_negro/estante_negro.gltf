@@ -59,7 +59,9 @@
 					"index":0
 				},
 				"metallicFactor":0,
-				"roughnessFactor":0.5527864098548889
+				"metallicRoughnessTexture":{
+					"index":1
+				}
 			}
 		},
 		{
@@ -76,10 +78,12 @@
 			"name":"Wardrobe_01",
 			"pbrMetallicRoughness":{
 				"baseColorTexture":{
-					"index":1
+					"index":2
 				},
 				"metallicFactor":0,
-				"roughnessFactor":0.5527864098548889
+				"metallicRoughnessTexture":{
+					"index":3
+				}
 			}
 		},
 		{
@@ -87,9 +91,12 @@
 			"name":"Door",
 			"pbrMetallicRoughness":{
 				"baseColorTexture":{
-					"index":2
+					"index":4
 				},
-				"metallicFactor":0
+				"metallicFactor":0,
+				"metallicRoughnessTexture":{
+					"index":5
+				}
 			}
 		}
 	],
@@ -142,7 +149,7 @@
 		{
 			"extensions":{
 				"EXT_texture_webp":{
-					"source":0
+					"source":1
 				}
 			},
 			"sampler":0
@@ -154,6 +161,30 @@
 				}
 			},
 			"sampler":0
+		},
+		{
+			"extensions":{
+				"EXT_texture_webp":{
+					"source":1
+				}
+			},
+			"sampler":0
+		},
+		{
+			"extensions":{
+				"EXT_texture_webp":{
+					"source":0
+				}
+			},
+			"sampler":0
+		},
+		{
+			"extensions":{
+				"EXT_texture_webp":{
+					"source":1
+				}
+			},
+			"sampler":0
 		}
 	],
 	"images":[
@@ -161,6 +192,11 @@
 			"mimeType":"image/webp",
 			"name":"estante_negro",
 			"uri":"estante_negro.webp"
+		},
+		{
+			"mimeType":"image/webp",
+			"name":"estante_negro Roughtness",
+			"uri":"estante_negro%20Roughtness.webp"
 		}
 	],
 	"accessors":[

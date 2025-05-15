@@ -32,7 +32,7 @@ export default function ProfilePostProcessing({ }) {
             <Vignette eskil={false} offset={0.01} darkness={0.5} />
 
             {/* Noise */}
-            <Noise opacity={2} />
+            <Noise opacity={0.02} />
 
             {/* Chromatic Aberration
             <ChromaticAberration

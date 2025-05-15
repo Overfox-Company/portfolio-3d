@@ -44,12 +44,18 @@
 		{
 			"doubleSided":true,
 			"name":"Guitar",
+			"normalTexture":{
+				"index":0,
+				"scale":2
+			},
 			"pbrMetallicRoughness":{
 				"baseColorTexture":{
-					"index":0
+					"index":1
 				},
 				"metallicFactor":0,
-				"roughnessFactor":0.5
+				"metallicRoughnessTexture":{
+					"index":2
+				}
 			}
 		}
 	],
@@ -77,13 +83,39 @@
 				}
 			},
 			"sampler":0
+		},
+		{
+			"extensions":{
+				"EXT_texture_webp":{
+					"source":1
+				}
+			},
+			"sampler":0
+		},
+		{
+			"extensions":{
+				"EXT_texture_webp":{
+					"source":2
+				}
+			},
+			"sampler":0
 		}
 	],
 	"images":[
 		{
 			"mimeType":"image/webp",
+			"name":"guitar Roughtness 2k",
+			"uri":"guitar%20Roughtness%202k.webp"
+		},
+		{
+			"mimeType":"image/webp",
 			"name":"Guitar 4k",
 			"uri":"Guitar%204k.webp"
+		},
+		{
+			"mimeType":"image/webp",
+			"name":"guitar Normal map 4k",
+			"uri":"guitar%20Normal%20map%204k.webp"
 		}
 	],
 	"accessors":[

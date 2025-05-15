@@ -194,6 +194,33 @@ export default function FPSCameraController({
             // Si está bloqueado, no actualiza la posición
         }
 
+        // --- Detección de colisión con objetos cerca de la cámara ---
+        const cameraRaycaster = new THREE.Raycaster(
+            targetPosition.current.clone(),
+            new THREE.Vector3(0, 1, 0), // Dirección hacia arriba
+            0, // Inicio del raycast desde la cámara
+            cameraHeight // Distancia máxima (altura de la cámara)
+        )
+        const objectsInPath = cameraRaycaster.intersectObjects(scene.children, true)
+        let collisionDetected = false
+        for (const object of objectsInPath) {
+            console.log(object.userData)
+            if (object.userData && object.userData[groundTag]) {
+                console.log("colision")
+                continue
+            }// Ignorar el suelo
+            // Si hay colisión, la velocidad se vuelve 0
+            collisionDetected = true
+            break
+        }
+
+        if (collisionDetected) {
+            velocity.current = [0, 0, 0] // Detener la velocidad si hay colisión
+        } else {
+            // Si no hay colisión, la cámara se mueve normalmente
+            targetPosition.current.copy(nextPosition)
+        }
+
         // --- Detección de suelo ---
         // Raycast hacia abajo desde la posición objetivo
         const raycaster = new THREE.Raycaster()
