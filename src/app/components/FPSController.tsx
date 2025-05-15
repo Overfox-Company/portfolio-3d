@@ -204,11 +204,11 @@ export default function FPSCameraController({
         const objectsInPath = cameraRaycaster.intersectObjects(scene.children, true)
         let collisionDetected = false
         for (const object of objectsInPath) {
-            console.log(object.userData)
-            if (object.userData && object.userData[groundTag]) {
-                console.log("colision")
-                continue
-            }// Ignorar el suelo
+            //  console.log(object.userData)
+            //  if (object.userData && object.userData[groundTag]) {
+            //    console.log("colision")
+            //  continue
+            ////  }// Ignorar el suelo
             // Si hay colisión, la velocidad se vuelve 0
             collisionDetected = true
             break
