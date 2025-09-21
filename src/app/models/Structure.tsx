@@ -8,6 +8,8 @@ export default function Structure(props: any) {
     const { scene: darkmarble } = useGLTF('/Living_room/forniture/Mueble_negro/nuevo/mueble_negro.gltf')
     const { scene: darkstante } = useGLTF('/Living_room/forniture/estante_negro/estante_negro.gltf')
     const { scene: whitemarble1 } = useGLTF('/Living_room/forniture/mueble_banco_1/mueble_blanco.gltf')
+    const { scene: whitemarble2 } = useGLTF('/Living_room/forniture/mueble_blanco_2/mueble_balnco_2.gltf')
+    const { scene: alfombra } = useGLTF('/Living_room/forniture/alfombra/alfombra.gltf')
     useEffect(() => {
 
 
@@ -18,6 +20,19 @@ export default function Structure(props: any) {
             }
         }
         )
+        whitemarble2.traverse((child: THREE.Object3D) => {
+            if ((child as THREE.Mesh).isMesh) {
+                (child as THREE.Mesh).castShadow = true as boolean
+                (child as THREE.Mesh).receiveShadow = true
+            }
+        })
+
+        alfombra.traverse((child: THREE.Object3D) => {
+            if ((child as THREE.Mesh).isMesh) {
+                (child as THREE.Mesh).castShadow = true as boolean
+                (child as THREE.Mesh).receiveShadow = true
+            }
+        })
 
         darkmarble.traverse((child: THREE.Object3D) => {
             if ((child as THREE.Mesh).isMesh) {
@@ -62,6 +77,14 @@ export default function Structure(props: any) {
                 ground: true
             }} />
             <primitive object={whitemarble1} {...props} userData={{
+
+                ground: true
+            }} />
+            <primitive object={whitemarble2} {...props} userData={{
+
+                ground: true
+            }} />
+            <primitive object={alfombra} {...props} userData={{
 
                 ground: true
             }} />
